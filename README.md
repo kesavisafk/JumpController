@@ -79,7 +79,7 @@ Built with an ESP32 / ESP32-C3 and an MPU6050 accelerometer, designed to be moun
 
 > ⚠️ Always connect to **VIN or 5V pin** on the ESP32, never the 3.3V pin directly — that bypasses the regulator and can damage the board.
 
-> ![Wiring Diagram](images/wiring_esp32.png)
+![Wiring Diagram](images/wiring_esp32.png)
 
 ### Full Power Chain
 
