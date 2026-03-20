@@ -277,8 +277,6 @@ float jumpThreshold = 1.5; // increase to require bigger jump
 
 ---
 
-![Breadboard Build](images/breadboard.jpg)
-
 ## 🔧 Troubleshooting
 
 | Problem | Solution |
