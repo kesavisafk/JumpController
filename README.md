@@ -21,7 +21,7 @@ Built with an ESP32 / ESP32-C3 and an MPU6050 accelerometer, designed to be moun
 
 ---
 
-## 🎬 Demo
+## 🎬 Here's a Demo
 
 ![JumpController Demo](images/demo.gif)
 
