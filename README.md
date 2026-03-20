@@ -182,6 +182,8 @@ float jumpThreshold = 1.5; // increase to require bigger jump
 
 ---
 
+![Breadboard Build](images/breadboard.jpg)
+
 ## ⚙️ ESP32-C3 Installation
 
 > Use this section only if you already have an ESP32-C3. If you are buying parts, use the ESP32 version above — it is much simpler.
