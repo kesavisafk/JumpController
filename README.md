@@ -1,4 +1,4 @@
-# 🦕 JumpHat — Chrome Dino Controller
+# 🦕 Chrome Dino Jump Controller
 
 Play the Chrome Dinosaur game by physically jumping while wearing a hat.
 
@@ -23,7 +23,7 @@ Built with an ESP32 / ESP32-C3 and an MPU6050 accelerometer, designed to be moun
 
 ## 🎬 Demo
 
-![JumpHat Demo](images/demo.gif)
+![JumpController Demo](images/demo.gif)
 
 ---
 
