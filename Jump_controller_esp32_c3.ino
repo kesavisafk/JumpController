@@ -6,9 +6,12 @@
 
 MPU6050 mpu;
 
-float jumpThreshold = 1.5;
-unsigned long jumpCooldown = 500;
+float jumpThreshold = 1.8;      // higher threshold — only a real jump upward
+float landingThreshold = 0.7;   // below this = freefall (you are in the air)
+unsigned long jumpCooldown = 400; // longer cooldown to skip landing spike
 unsigned long lastJumpTime = 0;
+
+bool inAir = false;             // tracks if you are currently airborne
 
 NimBLEHIDDevice* hid;
 NimBLECharacteristic* input;
@@ -117,16 +120,27 @@ void loop() {
 
   Serial.print("AZ: "); Serial.println(az_g, 3);
 
-  if (connected) {
-    unsigned long now = millis();
-    if (az_g > jumpThreshold && (now - lastJumpTime > jumpCooldown)) {
-      Serial.println("Jump! Sending SPACE...");
-      sendSpace();
-      lastJumpTime = now;
-    }
-  } else {
-    Serial.println("Waiting for connection...");
+  unsigned long now = millis();
+
+  // Step 1 — detect jump upward spike
+  if (!inAir && az_g > jumpThreshold && (now - lastJumpTime > jumpCooldown)) {
+    Serial.println("Jump detected! Sending SPACE...");
+    if (connected) sendSpace();
+    lastJumpTime = now;
+    inAir = true;  // mark as airborne, ignore everything until landing
   }
 
-  delay(100);
+  // Step 2 — detect freefall (you are in the air, AZ drops below 0.7g)
+  if (inAir && az_g < landingThreshold) {
+    Serial.println("Airborne...");
+  }
+
+  // Step 3 — detect landing (AZ returns to normal after freefall)
+  // just reset inAir so next jump can trigger, but do NOT send space
+  if (inAir && az_g > 0.9 && az_g < jumpThreshold && (now - lastJumpTime > 300)) {
+    Serial.println("Landed.");
+    inAir = false;
+  }
+
+  delay(50); // faster polling for better jump detection
 }
