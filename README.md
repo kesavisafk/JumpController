@@ -180,7 +180,7 @@ float jumpThreshold = 1.5; // increase to require bigger jump
 
 ---
 
-![Breadboard Build](images/breadboard.jpg)
+![Breadboard Build](images/PCB.jpg)
 
 ## ⚙️ ESP32-C3 Installation
 
