@@ -137,10 +137,10 @@ void loop() {
 
   // Step 3 — detect landing (AZ returns to normal after freefall)
   // just reset inAir so next jump can trigger, but do NOT send space
-  if (inAir && az_g > 0.9 && az_g < jumpThreshold && (now - lastJumpTime > 300)) {
+  if (inAir && az_g > 0.9 && az_g < jumpThreshold && (now - lastJumpTime > 150)) {
     Serial.println("Landed.");
     inAir = false;
   }
 
-  delay(50); // faster polling for better jump detection
+  delay(20); // faster polling for better jump detection
 }
